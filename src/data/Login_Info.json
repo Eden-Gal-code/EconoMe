@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "email": "Eden@gmail.com",
+    "password": "123",
+    "firstName": "Eden",
+    "lastName": "Gal",
+    "workPlace": "King of England",
+    "balance": 10000,
+    "spendlimit": 1000,
+    "income": 1500,
+    "expenses": [
+      {
+        "caption": "Snack",
+        "amount": 20,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Food"
+      },
+      {
+        "caption": "Book",
+        "amount": 50,
+        "date": "2.3.2020",
+        "location": "Yavne",
+        "field": "Pleasure"
+      },
+      {
+        "caption": "Train",
+        "amount": 12,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Transportation"
+      },
+      {
+        "caption": "Bus",
+        "amount": 8,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Transportation"
+      },
+      {
+        "caption": "Gas",
+        "amount": 176,
+        "date": "3.3.2020",
+        "location": "Gedera",
+        "field": "Utilities"
+      }
+    ],
+    "fields": ["Transportation", "Pleasure", "Food", "Utilities"],
+    "locations": ["Tel Aviv", "Gedera", "Yavne"],
+    "yearly": [
+      {
+        "year": 2017,
+        "Ybalance": 1000
+      },
+      {
+        "year": 2018,
+        "Ybalance": 2750
+      },
+      {
+        "year": 2019,
+        "Ybalance": 5043
+      }
+    ],
+    "monthly": [
+      {
+        "month": "Jan",
+        "Mbalance": 6089
+      },
+      {
+        "month": "Feb",
+        "Mbalance": 6793
+      },
+      {
+        "month": "Mar",
+        "Mbalance": 7432
+      },
+      {
+        "month": "Apr",
+        "Mbalance": 7998
+      },
+      {
+        "month": "May",
+        "Mbalance": 8598
+      },
+      {
+        "month": "Jun",
+        "Mbalance": 8235
+      },
+      {
+        "month": "Jul",
+        "Mbalance": 9034
+      },
+      {
+        "month": "Aug",
+        "Mbalance": 10239
+      },
+      {
+        "month": "Sep",
+        "Mbalance": 9846
+      },
+      {
+        "month": "Oct",
+        "Mbalance": 9923
+      },
+      {
+        "month": "Nov",
+        "Mbalance": 11023
+      },
+      {
+        "month": "Dec",
+        "Mbalance": 10000
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "email": "May@gmail.com",
+    "password": "2510",
+    "firstName": "May",
+    "lastName": "Israel",
+    "workPlace": "Queen of England",
+    "balance": 10000,
+    "spendlimit": 1000,
+    "income": 1500,
+    "expenses": [
+      {
+        "caption": "Snack",
+        "amount": 20,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Food"
+      },
+      {
+        "caption": "Book",
+        "amount": 50,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Pleasure"
+      },
+      {
+        "caption": "Train",
+        "amount": 12,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Transportation"
+      }
+    ],
+    "fields": ["Transportation", "Pleasure", "Food"],
+    "yearly": [
+      {
+        "year": 2017,
+        "Ybalance": 1000
+      },
+      {
+        "year": 2018,
+        "Ybalance": 2750
+      },
+      {
+        "year": 2019,
+        "Ybalance": 5043
+      }
+    ],
+    "monthly": [
+      {
+        "month": "Jan",
+        "Mbalance": 6089
+      },
+      {
+        "month": "Feb",
+        "Mbalance": 6793
+      },
+      {
+        "month": "Mar",
+        "Mbalance": 7432
+      },
+      {
+        "month": "Apr",
+        "Mbalance": 7998
+      },
+      {
+        "month": "May",
+        "Mbalance": 8598
+      },
+      {
+        "month": "Jun",
+        "Mbalance": 8235
+      },
+      {
+        "month": "Jul",
+        "Mbalance": 9034
+      },
+      {
+        "month": "Aug",
+        "Mbalance": 10239
+      },
+      {
+        "month": "Sep",
+        "Mbalance": 9846
+      },
+      {
+        "month": "Oct",
+        "Mbalance": 9923
+      },
+      {
+        "month": "Nov",
+        "Mbalance": 11023
+      },
+      {
+        "month": "Dec",
+        "Mbalance": 10000
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "email": "Noam@gmail.com",
+    "password": "1234",
+    "firstName": "Noam",
+    "lastName": "Katzburg",
+    "workPlace": "Student at John-Bryce",
+    "balance": 10000000,
+    "spendlimit": 100000,
+    "income": 150000,
+    "expenses": [
+      {
+        "caption": "Snack",
+        "amount": 20,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Food"
+      },
+      {
+        "caption": "Book",
+        "amount": 50,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Pleasure"
+      },
+      {
+        "caption": "Train",
+        "amount": 12,
+        "date": "2.3.2020",
+        "location": "Tel Aviv",
+        "field": "Transportation"
+      }
+    ],
+    "fields": ["Transportation", "Pleasure", "Food"],
+    "yearly": [
+      {
+        "year": 2017,
+        "Ybalance": 1000
+      },
+      {
+        "year": 2018,
+        "Ybalance": 2750
+      },
+      {
+        "year": 2019,
+        "Ybalance": 5043
+      }
+    ],
+    "monthly": [
+      {
+        "month": "Jan",
+        "Mbalance": 6089
+      },
+      {
+        "month": "Feb",
+        "Mbalance": 6793
+      },
+      {
+        "month": "Mar",
+        "Mbalance": 7432
+      },
+      {
+        "month": "Apr",
+        "Mbalance": 7998
+      },
+      {
+        "month": "May",
+        "Mbalance": 8598
+      },
+      {
+        "month": "Jun",
+        "Mbalance": 8235
+      },
+      {
+        "month": "Jul",
+        "Mbalance": 9034
+      },
+      {
+        "month": "Aug",
+        "Mbalance": 10239
+      },
+      {
+        "month": "Sep",
+        "Mbalance": 9846
+      },
+      {
+        "month": "Oct",
+        "Mbalance": 9923
+      },
+      {
+        "month": "Nov",
+        "Mbalance": 11023
+      },
+      {
+        "month": "Dec",
+        "Mbalance": 10000
+      }
+    ]
+  }
+]
