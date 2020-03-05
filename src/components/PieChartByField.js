@@ -85,6 +85,7 @@ class PieChartByField extends React.Component {
     };
     this.state.usr.fields.map(field => {
       this.state.data.push(this.SearchField(field));
+      return null;
     });
   }
   SearchField(field) {
@@ -93,6 +94,7 @@ class PieChartByField extends React.Component {
       if (exp.field === field) {
         obj.value += exp.amount;
       }
+      return null;
     });
     return obj;
   }

@@ -7,7 +7,7 @@ import Welcome from "./views/Welcome";
 import Expenses from "./Logged/Expenses";
 import AddExp from "./Logged/AddExp";
 import Profile from "./Logged/Profile";
-
+import About from "./views/About";
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Welcome}></Route>
           <Route path="/views/Welcome" component={Welcome}></Route>
-
+          <Route path="/views/About" component={About}></Route>
           <Route path="/views/Login" component={Login}></Route>
           <Route path="/Logged/Profile" component={Profile}></Route>
           <Route path="/Logged/Expenses" component={Expenses}></Route>

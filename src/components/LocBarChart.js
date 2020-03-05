@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 
 export default class Example extends React.Component {
   static jsfiddleUrl = "https://jsfiddle.net/alidingling/30763kr7/";
@@ -20,6 +11,7 @@ export default class Example extends React.Component {
     };
     this.state.usr.locations.map(loc => {
       this.state.data.push(this.SearchLocs(loc));
+      return null;
     });
   }
   SearchLocs(loc) {
@@ -28,6 +20,7 @@ export default class Example extends React.Component {
       if (exp.location === loc) {
         obj.value += exp.amount;
       }
+      return null;
     });
     return obj;
   }

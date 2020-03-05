@@ -5,8 +5,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend
+  Tooltip
 } from "recharts";
 
 class YearlyChart extends React.Component {
@@ -22,6 +21,7 @@ class YearlyChart extends React.Component {
         name: data.year,
         balance: data.Ybalance
       });
+      return null;
     });
     this.state.data.push({
       name: new Date().getFullYear(),

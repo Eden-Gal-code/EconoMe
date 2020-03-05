@@ -5,8 +5,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend
+  Tooltip
 } from "recharts";
 
 class MonthlyChart extends React.Component {
@@ -22,6 +21,7 @@ class MonthlyChart extends React.Component {
         name: data.month,
         balance: data.Mbalance
       });
+      return null;
     });
   }
 

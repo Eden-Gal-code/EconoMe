@@ -18,6 +18,7 @@ class Expenses extends React.Component {
     } else {
       this.state.usr.fields.map(field => {
         this.state.lists.push(this.SearchField(field));
+        return null;
       });
     }
   }
@@ -27,6 +28,7 @@ class Expenses extends React.Component {
       if (exp.field === field) {
         obj.exps.push(exp);
       }
+      return null;
     });
     return obj;
   }
