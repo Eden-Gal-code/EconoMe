@@ -1,8 +1,8 @@
 import React from "react";
-import LoginIn from "../data/Login_Info.json";
+// import LoginIn from "../data/Login_Info.json";
 import { withRouter } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
-
+import axios from "axios";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -24,17 +24,30 @@ class Login extends React.Component {
     });
   }
   async checkLogin() {
-    LoginIn.map(UserInfo => {
-      if (
-        this.state.Email.slice() === UserInfo.email &&
-        this.state.Password.slice() === UserInfo.password
-      ) {
-        this.state.isLogged = true;
-        this.props.history.push("/Logged/Profile");
-        sessionStorage.setItem("user", JSON.stringify(UserInfo));
+    const LoginInfo = {
+      email: this.state.Email.slice(),
+      password: this.state.Password.slice()
+    };
+    axios.post("http://localhost:5000/users/login", LoginInfo).then(res => {
+      if (res.data !== "0") {
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+      } else {
+        alert("Email or Password incorect");
       }
-      return null;
     });
+    if (sessionStorage.getItem("user") !== null) {
+      this.props.history.push("/Logged/Profile");
+    }
+    // LoginIn.map(UserInfo => {
+    //   if (
+    //     this.state.Email.slice() === UserInfo.email &&
+    //     this.state.Password.slice() === UserInfo.password
+    //   ) {
+
+    //     sessionStorage.setItem("user", JSON.stringify(UserInfo));
+    //   }
+    //   return null;
+    // });
   }
   render() {
     return (
@@ -57,12 +70,10 @@ class Login extends React.Component {
             />
           </Form.Group>
           <Button
-            type="submit"
+            type="button"
             variant="primary"
             onClick={() => {
               this.checkLogin();
-              if (this.state.isLogged) {
-              }
             }}
           >
             Submit

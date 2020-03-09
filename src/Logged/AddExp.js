@@ -4,6 +4,7 @@ import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 import Lottie from "react-lottie";
 import animationData from "../assets/Submit.json";
+import axios from "axios";
 class AddExp extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +36,20 @@ class AddExp extends React.Component {
     };
     this.updateInput("isStopped", false);
     console.log(DataForServer);
+
+    axios
+      .post(
+        `http://localhost:5000/users/addExp/${this.state.usr._id}`,
+        DataForServer
+      )
+      .then(res => console.log(res.data));
+
+    axios.get(`http://localhost:5000/users/${this.state.usr._id}`).then(res => {
+      console.log(res.data);
+      sessionStorage.removeItem("user");
+
+      sessionStorage.setItem("user", JSON.stringify(res.data));
+    });
   }
   checkAm(amount) {
     for (let index = 0; index < this.state.amount.slice().length; index++) {
