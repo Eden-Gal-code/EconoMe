@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import ListByField from "../components/ListByField";
 import Container from "react-bootstrap/Container";
-
 import { withRouter } from "react-router-dom";
 class Expenses extends React.Component {
   constructor(props) {
@@ -40,6 +39,7 @@ class Expenses extends React.Component {
             {this.state.usr.firstName} {this.state.usr.lastName}
           </h2>
           <h4> Your Spend-Limit {this.state.usr.spendlimit}₪</h4>
+
           <React.Fragment>
             <Row>
               {this.state.lists.map(list => {

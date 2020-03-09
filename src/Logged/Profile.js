@@ -31,7 +31,7 @@ class Profile extends React.Component {
             <h6> Balance: {this.state.usr.balance}</h6>
             <h6> Income: {this.state.usr.income}</h6>
           </Jumbo>
-          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+          <Tabs defaultActiveKey="yearly" id="uncontrolled-tab-example">
             <Tab eventKey="yearly" title="Yearly Balance">
               <Container className="d-flex justify-content-center">
                 <YearlyChart></YearlyChart>

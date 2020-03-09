@@ -2,6 +2,8 @@ import React from "react";
 import { Form, Col, Button, Row, Container } from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
+import Lottie from "react-lottie";
+import animationData from "../assets/Submit.json";
 class AddExp extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,10 @@ class AddExp extends React.Component {
       usr: JSON.parse(sessionStorage.getItem("user")),
       open: false,
       date: new Date(),
-      location: ""
+      location: "",
+      isSubmit: 0,
+      isStopped: true,
+      isAmInValid: false
     };
   }
   updateInput(key, value) {
@@ -28,9 +33,35 @@ class AddExp extends React.Component {
       location: this.state.location,
       field: this.state.field
     };
+    this.updateInput("isStopped", false);
     console.log(DataForServer);
   }
+  checkAm(amount) {
+    for (let index = 0; index < this.state.amount.slice().length; index++) {
+      if (
+        this.state.amount.charAt(index) !== "0" &&
+        this.state.amount.charAt(index) !== "1" &&
+        this.state.amount.charAt(index) !== "2" &&
+        this.state.amount.charAt(index) !== "3" &&
+        this.state.amount.charAt(index) !== "4" &&
+        this.state.amount.charAt(index) !== "5" &&
+        this.state.amount.charAt(index) !== "6" &&
+        this.state.amount.charAt(index) !== "7" &&
+        this.state.amount.charAt(index) !== "8" &&
+        this.state.amount.charAt(index) !== "9"
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
   render() {
+    const defaultOptions = {
+      loop: false,
+      autoplay: false,
+      animationData: animationData
+    };
+
     return (
       <Container className="mt-1">
         <br />
@@ -49,6 +80,9 @@ class AddExp extends React.Component {
                       key={field}
                       name="formHorizontalRadios"
                       onChange={e => {
+                        if (this.state.field === "") {
+                          this.updateInput("isSubmit", this.state.isSubmit + 1);
+                        }
                         this.updateInput("field", field);
                         this.updateInput("open", false);
                       }}
@@ -76,7 +110,11 @@ class AddExp extends React.Component {
                 type="text"
                 placeholder="Field"
                 onChange={e => {
+                  if (this.state.field === "") {
+                    this.updateInput("isSubmit", this.state.isSubmit + 1);
+                  }
                   this.updateInput("field", e.target.value);
+                  this.updateInput("isAmInValid", this.checkAm());
                 }}
                 disabled={!this.state.open}
               />
@@ -90,7 +128,14 @@ class AddExp extends React.Component {
               <Form.Control
                 type="text"
                 placeholder="Caption"
-                onChange={e => this.updateInput("caption", e.target.value)}
+                onChange={e => {
+                  if (this.state.caption === "") {
+                    this.updateInput("isSubmit", this.state.isSubmit + 1);
+                  }
+                  this.updateInput("caption", e.target.value);
+                  this.updateInput("isAmInValid", this.checkAm());
+                }}
+                required
               />
             </Col>
           </Form.Group>
@@ -103,8 +148,22 @@ class AddExp extends React.Component {
               <Form.Control
                 type="text"
                 placeholder="Amount"
-                onChange={e => this.updateInput("amount", e.target.value)}
+                value={this.state.amount.slice()}
+                onChange={e => {
+                  if (this.state.amount === "") {
+                    this.updateInput("isSubmit", this.state.isSubmit + 1);
+                  }
+
+                  this.updateInput("amount", e.target.value);
+                  console.log(this.state.amount);
+                  this.updateInput("isAmInValid", this.checkAm());
+                }}
+                required
+                isInvalid={this.state.isAmInValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {"Must Contain Numbers Only "}
+              </Form.Control.Feedback>
             </Col>
           </Form.Group>
 
@@ -117,8 +176,13 @@ class AddExp extends React.Component {
                 type="text"
                 placeholder="City"
                 onChange={e => {
+                  if (this.state.location === "") {
+                    this.updateInput("isSubmit", this.state.isSubmit + 1);
+                  }
                   this.updateInput("location", e.target.value);
+                  this.updateInput("isAmInValid", this.checkAm());
                 }}
+                required
               />
             </Col>
           </Form.Group>
@@ -128,7 +192,13 @@ class AddExp extends React.Component {
             </Form.Label>
             <Col sm={10}>
               <DayPickerInput
-                onDayChange={day => this.updateInput("date", day)}
+                onDayChange={day => {
+                  this.updateInput("isSubmit", this.state.isSubmit + 1);
+
+                  this.updateInput("date", day);
+                  this.updateInput("isAmInValid", this.checkAm());
+                }}
+                required
               />
             </Col>
           </Form.Group>
@@ -138,9 +208,20 @@ class AddExp extends React.Component {
                 onClick={() => {
                   this.handleSubmit();
                 }}
+                disabled={!(this.state.isSubmit > 4)}
               >
                 Add
               </Button>
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Lottie
+                options={defaultOptions}
+                height={155}
+                width={300}
+                isPaused={this.state.isStopped}
+              />
             </Col>
           </Form.Group>
         </Form>
