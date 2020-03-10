@@ -85,7 +85,7 @@ router.route("/addExp/:id").post((req, res) => {
 
     user
       .save()
-      .then(() => res.json("User Added Expense!"))
+      .then(() => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
   });
 });

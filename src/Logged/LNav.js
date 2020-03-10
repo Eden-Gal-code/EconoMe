@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import logo from "../assets/Logo.png";
 const LNav = () => {
   const Hour = new Date().getHours();
   let text = "initial";
@@ -18,12 +19,11 @@ const LNav = () => {
       <Navbar.Brand href="/Logged/Profile">
         <img
           alt=""
-          src="/logo.svg"
-          width="30"
-          height="30"
+          src={logo}
+          width="130"
+          height="35"
           className="d-inline-block align-top"
         />{" "}
-        EconoMe
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

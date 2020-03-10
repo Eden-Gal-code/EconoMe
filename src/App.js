@@ -8,6 +8,7 @@ import Expenses from "./Logged/Expenses";
 import AddExp from "./Logged/AddExp";
 import Profile from "./Logged/Profile";
 import About from "./views/About";
+import Register from "./views/Register";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/views/Welcome" component={Welcome}></Route>
           <Route path="/views/About" component={About}></Route>
           <Route path="/views/Login" component={Login}></Route>
+          <Route path="/views/Register" component={Register}></Route>
           <Route path="/Logged/Profile" component={Profile}></Route>
           <Route path="/Logged/Expenses" component={Expenses}></Route>
           <Route path="/Logged/AddEx" component={AddExp}></Route>

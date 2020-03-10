@@ -42,14 +42,10 @@ class AddExp extends React.Component {
         `http://localhost:5000/users/addExp/${this.state.usr._id}`,
         DataForServer
       )
-      .then(res => console.log(res.data));
-
-    axios.get(`http://localhost:5000/users/${this.state.usr._id}`).then(res => {
-      console.log(res.data);
-      sessionStorage.removeItem("user");
-
-      sessionStorage.setItem("user", JSON.stringify(res.data));
-    });
+      .then(res => {
+        console.log(res.data);
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+      });
   }
   checkAm(amount) {
     for (let index = 0; index < this.state.amount.slice().length; index++) {
