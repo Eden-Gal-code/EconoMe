@@ -1,58 +1,132 @@
 import React from "react";
 import { Form, Col, Button, Container } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 class Register extends React.Component {
-  state = {};
+  state = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    workplace: "",
+    balance: "",
+    income: "",
+    spendlimit: ""
+  };
+
+  updateInput(key, value) {
+    this.setState({
+      [key]: value
+    });
+  }
+  async handleSubmit() {
+    const dataS = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      workplace: this.state.workplace,
+      balance: this.state.balance,
+      income: this.state.income,
+      spendlimit: this.state.spendlimit
+    };
+    console.log(dataS);
+    await axios.post("http://localhost:5000/users/add", dataS).then(res => {
+      console.log(res.data);
+      sessionStorage.setItem("user", JSON.stringify(res.data));
+    });
+    this.props.history.push("/Logged/Profile");
+  }
   render() {
     return (
       <Container>
+        <br />
         <Form>
           <Form.Row>
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={e => {
+                  this.updateInput("email", e.target.value);
+                }}
+              />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={e => {
+                  this.updateInput("password", e.target.value);
+                }}
+              />
             </Form.Group>
           </Form.Row>
-
-          <Form.Group controlId="formGridAddress1">
-            <Form.Label>Address</Form.Label>
-            <Form.Control placeholder="1234 Main St" />
-          </Form.Group>
-
-          <Form.Group controlId="formGridAddress2">
-            <Form.Label>Address 2</Form.Label>
-            <Form.Control placeholder="Apartment, studio, or floor" />
-          </Form.Group>
-
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control />
+            <Form.Group as={Col} controlId="formGridAddress1">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                placeholder="John"
+                onChange={e => {
+                  this.updateInput("firstName", e.target.value);
+                }}
+              />
             </Form.Group>
 
+            <Form.Group as={Col} controlId="formGridAddress2">
+              <Form.Label>Last Name </Form.Label>
+              <Form.Control
+                placeholder="Doe"
+                onChange={e => {
+                  this.updateInput("lastName", e.target.value);
+                }}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId="formGridCity">
+            <Form.Label>Work</Form.Label>
+            <Form.Control
+              onChange={e => {
+                this.updateInput("workplace", e.target.value);
+              }}
+            />
+          </Form.Group>
+          <Form.Row>
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
-              <Form.Control as="select">
-                <option>Choose...</option>
-                <option>...</option>
-              </Form.Control>
+              <Form.Label>Balance</Form.Label>
+              <Form.Control
+                onChange={e => {
+                  this.updateInput("balance", e.target.value);
+                }}
+              />
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control />
+              <Form.Label>Income</Form.Label>
+              <Form.Control
+                onChange={e => {
+                  this.updateInput("income", e.target.value);
+                }}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridSprnd">
+              <Form.Label>Spend Limit</Form.Label>
+              <Form.Control
+                onChange={e => {
+                  this.updateInput("spendlimit", e.target.value);
+                }}
+              />
             </Form.Group>
           </Form.Row>
 
-          <Form.Group id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
+          <Button
+            variant="primary"
+            type="button"
+            onClick={() => this.handleSubmit()}
+          >
             Submit
           </Button>
         </Form>
@@ -61,4 +135,4 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);

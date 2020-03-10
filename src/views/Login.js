@@ -28,26 +28,18 @@ class Login extends React.Component {
       email: this.state.Email.slice(),
       password: this.state.Password.slice()
     };
-    axios.post("http://localhost:5000/users/login", LoginInfo).then(res => {
-      if (res.data !== "0") {
-        sessionStorage.setItem("user", JSON.stringify(res.data));
-      } else {
-        alert("Email or Password incorect");
-      }
-    });
+    await axios
+      .post("http://localhost:5000/users/login", LoginInfo)
+      .then(res => {
+        if (res.data !== "0") {
+          sessionStorage.setItem("user", JSON.stringify(res.data));
+        } else {
+          alert("Email or Password incorect");
+        }
+      });
     if (sessionStorage.getItem("user") !== null) {
       this.props.history.push("/Logged/Profile");
     }
-    // LoginIn.map(UserInfo => {
-    //   if (
-    //     this.state.Email.slice() === UserInfo.email &&
-    //     this.state.Password.slice() === UserInfo.password
-    //   ) {
-
-    //     sessionStorage.setItem("user", JSON.stringify(UserInfo));
-    //   }
-    //   return null;
-    // });
   }
   render() {
     return (

@@ -39,7 +39,7 @@ router.route("/add").post((req, res) => {
   const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
-  const workplace = req.body.workPlace;
+  const workplace = req.body.workplace;
   const balance = req.body.balance;
   const income = req.body.income;
   const spendlimit = req.body.spendlimit;
@@ -62,7 +62,7 @@ router.route("/add").post((req, res) => {
 
   newUser
     .save()
-    .then(() => res.json("User Added!"))
+    .then(() => res.json(newUser))
     .catch(err => res.status(400).json("Error: " + err));
 });
 //Adding a new Expense
