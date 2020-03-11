@@ -107,22 +107,19 @@ class PieChartByField extends React.Component {
 
   render() {
     return (
-      <PieChart
-        width={455}
-        height={400}
-        className="d-flex justify-content-center"
-      >
+      <PieChart width={500} height={400}>
         <Pie
           activeIndex={this.state.activeIndex}
           activeShape={renderActiveShape}
           data={this.state.data}
-          cx={200}
-          cy={200}
-          innerRadius={100}
-          outerRadius={140}
+          cx={190}
+          cy={190}
+          innerRadius={70}
+          outerRadius={90}
           fill="#0088FE"
           dataKey="value"
           onMouseEnter={this.onPieEnter}
+          className="d-flex justify-content-center"
         />
       </PieChart>
     );

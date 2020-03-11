@@ -35,6 +35,7 @@ class Register extends React.Component {
       console.log(res.data);
       sessionStorage.setItem("user", JSON.stringify(res.data));
     });
+
     this.props.history.push("/Logged/Profile");
   }
   render() {

@@ -166,7 +166,7 @@ class AddExp extends React.Component {
                   }
 
                   this.updateInput("amount", e.target.value);
-                  console.log(this.state.amount);
+
                   this.updateInput("isAmInValid", this.checkAm());
                 }}
                 required

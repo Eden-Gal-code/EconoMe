@@ -24,7 +24,7 @@ const userSchema = new Schema(
     fields: [String],
     locations: [String],
     yearly: [{ year: Number, Ybalance: Number }],
-    monthly: [{ month: Number, Mbalance: Number }]
+    monthly: [{ month: String, Mbalance: Number }]
   },
   { timestamps: true }
 );
