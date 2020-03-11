@@ -29,7 +29,7 @@ class Login extends React.Component {
       password: this.state.Password.slice()
     };
     await axios
-      .post("https://0.0.0.0:5000/users/login", LoginInfo)
+      .post("https://localhost:5000/users/login", LoginInfo)
       .then(res => {
         if (res.data !== "0") {
           sessionStorage.setItem("user", JSON.stringify(res.data));
