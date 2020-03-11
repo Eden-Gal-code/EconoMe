@@ -6,6 +6,8 @@ import MonthlyChart from "../components/MonthlyChart";
 import { withRouter } from "react-router-dom";
 import PieChartByField from "../components/PieChartByField";
 import LocBarChart from "../components/LocBarChart";
+import EditMonthly from "../components/EditMonthly";
+import EditYearly from "../components/EditYearly";
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -27,17 +29,19 @@ class Profile extends React.Component {
           <Jumbo
             Head={this.state.usr.firstName + " " + this.state.usr.lastName}
           >
-            <h6> Workplace: {this.state.usr.workPlace}</h6>
+            <h6> Work Place: {this.state.usr.workplace}</h6>
             <h6> Balance: {this.state.usr.balance}</h6>
             <h6> Income: {this.state.usr.income}</h6>
           </Jumbo>
           <Tabs defaultActiveKey="yearly" id="uncontrolled-tab-example">
             <Tab eventKey="yearly" title="Yearly Balance">
+              <EditYearly />
               <Container className="d-flex justify-content-center">
                 <YearlyChart></YearlyChart>
               </Container>
             </Tab>
             <Tab eventKey="monthly" title="Monthly Balance">
+              <EditMonthly />
               <Container className="d-flex justify-content-center">
                 <MonthlyChart></MonthlyChart>
               </Container>

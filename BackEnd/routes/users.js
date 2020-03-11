@@ -181,6 +181,33 @@ router.route("/editExp/:id/:exp").post((req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
   });
 });
+//Editing the monthly
+router.route("/editMonth/:id").post((req, res) => {
+  User.findById(req.params.id).then(user => {
+    user.monthly = req.body.monthly;
+
+    updateLocAndFields(user);
+
+    user
+      .save()
+      .then(() => res.json(user))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+});
+
+//Editing the yearly
+router.route("/editYear/:id").post((req, res) => {
+  User.findById(req.params.id).then(user => {
+    user.yearly = req.body.yearly;
+
+    updateLocAndFields(user);
+
+    user
+      .save()
+      .then(() => res.json(user))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+});
 
 //Adding a new Expense
 router.route("/addExp/:id").post((req, res) => {
