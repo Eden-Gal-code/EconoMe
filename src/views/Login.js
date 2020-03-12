@@ -29,7 +29,7 @@ class Login extends React.Component {
       password: this.state.Password.slice()
     };
     await axios
-      .post("https://econo-me-serv.herokuapp/users/login.com", LoginInfo)
+      .post("https://econo-me-serv.herokuapp.com/users/login", LoginInfo)
       .then(res => {
         if (res.data !== "0") {
           sessionStorage.setItem("user", JSON.stringify(res.data));
