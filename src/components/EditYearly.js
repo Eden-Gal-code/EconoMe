@@ -32,7 +32,7 @@ class EditMonthly extends React.Component {
     return (
       <React.Fragment>
         <Button onClick={() => this.setModalShow(true)}>
-          Edit Monthly Balances
+          Edit Yearly Balances
         </Button>
 
         <Modal
