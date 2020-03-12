@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Col, Button, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+
 class Register extends React.Component {
   state = {
     firstName: "",
@@ -11,7 +12,8 @@ class Register extends React.Component {
     workplace: "",
     balance: "",
     income: "",
-    spendlimit: ""
+    spendlimit: "",
+    valid: true
   };
 
   updateInput(key, value) {
@@ -19,12 +21,19 @@ class Register extends React.Component {
       [key]: value
     });
   }
+  hashCode = s => {
+    var h = 0,
+      l = s.length,
+      i = 0;
+    if (l > 0) while (i < l) h = ((h << 5) - h + s.charCodeAt(i++)) | 0;
+    return h;
+  };
   async handleSubmit() {
     const dataS = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
-      password: this.state.password,
+      password: this.hashCode(this.state.password),
       workplace: this.state.workplace,
       balance: this.state.balance,
       income: this.state.income,
@@ -64,8 +73,16 @@ class Register extends React.Component {
                 placeholder="Password"
                 onChange={e => {
                   this.updateInput("password", e.target.value);
+                  if (this.state.password.length > 7) {
+                    this.updateInput("valid", false);
+                  } else {
+                    this.updateInput("valid", true);
+                  }
                 }}
               />
+              <Form.Text className="text-muted">
+                Must Contain 8 Characters
+              </Form.Text>
             </Form.Group>
           </Form.Row>
           <Form.Row>
@@ -129,6 +146,7 @@ class Register extends React.Component {
             variant="primary"
             type="button"
             onClick={() => this.handleSubmit()}
+            disabled={this.state.valid}
           >
             Submit
           </Button>

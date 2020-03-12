@@ -23,10 +23,18 @@ class Login extends React.Component {
       [key]: value
     });
   }
+  hashCode = s => {
+    var h = 0,
+      l = s.length,
+      i = 0;
+    if (l > 0) while (i < l) h = ((h << 5) - h + s.charCodeAt(i++)) | 0;
+    return h;
+  };
   async checkLogin() {
+    console.log(this.hashCode(this.state.Password));
     const LoginInfo = {
       email: this.state.Email.slice(),
-      password: this.state.Password.slice()
+      password: this.hashCode(this.state.Password)
     };
     await axios
       .post("https://econo-me-serv.herokuapp.com/users/login", LoginInfo)
