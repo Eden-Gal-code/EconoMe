@@ -31,10 +31,12 @@ class Register extends React.Component {
       spendlimit: this.state.spendlimit
     };
     console.log(dataS);
-    await axios.post("http://localhost:5000/users/add", dataS).then(res => {
-      console.log(res.data);
-      sessionStorage.setItem("user", JSON.stringify(res.data));
-    });
+    await axios
+      .post("https://econo-me-serv.herokuapp.com/users/add", dataS)
+      .then(res => {
+        console.log(res.data);
+        sessionStorage.setItem("user", JSON.stringify(res.data));
+      });
 
     this.props.history.push("/Logged/Profile");
   }

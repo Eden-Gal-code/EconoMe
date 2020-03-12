@@ -36,7 +36,7 @@ class EditExpModal extends React.Component {
 
     axios
       .post(
-        `http://localhost:5000/users/editExp/${this.state.usr._id}/${this.props.id}`,
+        `https://econo-me-serv.herokuapp.com/users/editExp/${this.state.usr._id}/${this.props.id}`,
         DataForServer
       )
       .then(res => {

@@ -8,7 +8,7 @@ class Expense extends React.Component {
   async ClickDelete() {
     await axios
       .delete(
-        `http://localhost:5000/users/${this.props.usrId}/${this.props.expId}`
+        `https://econo-me-serv.herokuapp.com/users/${this.props.usrId}/${this.props.expId}`
       )
       .then(res => {
         console.log(res.data);

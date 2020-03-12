@@ -39,7 +39,7 @@ class AddExp extends React.Component {
 
     axios
       .post(
-        `http://localhost:5000/users/addExp/${this.state.usr._id}`,
+        `https://econo-me-serv.herokuapp.com/users/addExp/${this.state.usr._id}`,
         DataForServer
       )
       .then(res => {

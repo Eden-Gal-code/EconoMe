@@ -21,7 +21,10 @@ class EditMonthly extends React.Component {
       monthly: this.state.monthly
     };
     axios
-      .post(`http://localhost:5000/users/editMonth/${this.state.usr._id}`, data)
+      .post(
+        `https://econo-me-serv.herokuapp.com/users/editMonth/${this.state.usr._id}`,
+        data
+      )
       .then(res => {
         console.log(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
