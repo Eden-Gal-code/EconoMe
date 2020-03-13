@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Col, Button, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import { hashCode } from "./Login";
 
 class Register extends React.Component {
   state = {
@@ -21,19 +22,13 @@ class Register extends React.Component {
       [key]: value
     });
   }
-  hashCode = s => {
-    var h = 0,
-      l = s.length,
-      i = 0;
-    if (l > 0) while (i < l) h = ((h << 5) - h + s.charCodeAt(i++)) | 0;
-    return h;
-  };
+
   async handleSubmit() {
     const dataS = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
-      password: this.hashCode(this.state.password),
+      password: hashCode(this.state.password),
       workplace: this.state.workplace,
       balance: this.state.balance,
       income: this.state.income,
@@ -49,6 +44,14 @@ class Register extends React.Component {
 
     this.props.history.push("/Logged/Profile");
   }
+  async passwordAuth(e) {
+    await this.updateInput("password", e.target.value);
+    if (this.state.password.length > 7) {
+      this.updateInput("valid", false);
+    } else {
+      this.updateInput("valid", true);
+    }
+  }
   render() {
     return (
       <Container>
@@ -63,6 +66,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("email", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
 
@@ -72,12 +76,7 @@ class Register extends React.Component {
                 type="password"
                 placeholder="Password"
                 onChange={e => {
-                  this.updateInput("password", e.target.value);
-                  if (this.state.password.length > 7) {
-                    this.updateInput("valid", false);
-                  } else {
-                    this.updateInput("valid", true);
-                  }
+                  this.passwordAuth(e);
                 }}
               />
               <Form.Text className="text-muted">
@@ -93,6 +92,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("firstName", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
 
@@ -103,6 +103,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("lastName", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
           </Form.Row>
@@ -112,6 +113,7 @@ class Register extends React.Component {
               onChange={e => {
                 this.updateInput("workplace", e.target.value);
               }}
+              autoComplete="Nope"
             />
           </Form.Group>
           <Form.Row>
@@ -121,6 +123,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("balance", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
 
@@ -130,6 +133,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("income", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridSprnd">
@@ -138,6 +142,7 @@ class Register extends React.Component {
                 onChange={e => {
                   this.updateInput("spendlimit", e.target.value);
                 }}
+                autoComplete="Nope"
               />
             </Form.Group>
           </Form.Row>

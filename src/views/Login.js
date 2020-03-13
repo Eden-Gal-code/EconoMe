@@ -3,6 +3,14 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
+
+export function hashCode(s) {
+  var h = 0,
+    l = s.length,
+    i = 0;
+  if (l > 0) while (i < l) h = ((h << 5) - h + s.charCodeAt(i++)) | 0;
+  return h;
+}
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -23,18 +31,12 @@ class Login extends React.Component {
       [key]: value
     });
   }
-  hashCode = s => {
-    var h = 0,
-      l = s.length,
-      i = 0;
-    if (l > 0) while (i < l) h = ((h << 5) - h + s.charCodeAt(i++)) | 0;
-    return h;
-  };
+
   async checkLogin() {
-    console.log(this.hashCode(this.state.Password));
+    console.log(hashCode(this.state.Password));
     const LoginInfo = {
       email: this.state.Email.slice(),
-      password: this.hashCode(this.state.Password)
+      password: hashCode(this.state.Password)
     };
     await axios
       .post("https://econo-me-serv.herokuapp.com/users/login", LoginInfo)
