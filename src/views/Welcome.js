@@ -12,7 +12,7 @@ class Welcome extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Jumbo Head="Welcom">Track All Your Expenses!!</Jumbo>
+        <Jumbo Head="Welcome">Track All Your Expenses!!</Jumbo>
         <Style>
           <Container className="center">
             <CardDeck>

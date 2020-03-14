@@ -15,7 +15,7 @@ const LNav = () => {
     }
   }
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar sticky="top" bg="light" expand="lg">
       <Navbar.Brand href="/Logged/Profile">
         <img
           alt=""

@@ -80,7 +80,7 @@ class AddExp extends React.Component {
           <fieldset>
             <Form.Group as={Row}>
               <Form.Label as="legend" column sm={2}>
-                Field
+                Categories
               </Form.Label>
               <Col sm={10}>
                 {this.state.usr.fields.map(field => {
@@ -114,7 +114,7 @@ class AddExp extends React.Component {
           </fieldset>
           <Form.Group as={Row}>
             <Form.Label column sm={2}>
-              Custom Field
+              Custom Category
             </Form.Label>
             <Col sm={10}>
               <Form.Control
@@ -133,12 +133,12 @@ class AddExp extends React.Component {
           </Form.Group>
           <Form.Group as={Row}>
             <Form.Label column sm={2}>
-              Caption
+              What did you Buy?
             </Form.Label>
             <Col sm={10}>
               <Form.Control
                 type="text"
-                placeholder="Caption"
+                placeholder="What did you Buy?"
                 onChange={e => {
                   if (this.state.caption === "") {
                     this.updateInput("isSubmit", this.state.isSubmit + 1);
@@ -153,7 +153,7 @@ class AddExp extends React.Component {
 
           <Form.Group as={Row}>
             <Form.Label column sm={2}>
-              Amount
+              How much did you spend?
             </Form.Label>
             <Col sm={10}>
               <Form.Control
