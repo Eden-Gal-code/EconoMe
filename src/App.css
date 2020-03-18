@@ -1,0 +1,15 @@
+.App {
+  margin-top: auto;
+  text-align: left;
+  background-color: #ebebeb;
+  min-height: 88vh;
+  z-index: -3;
+}
+.Foot {
+  text-align: center;
+  position: stickey;
+  bottom: 0;
+  width: 100%;
+
+  background-color: #c2c2c2;
+}

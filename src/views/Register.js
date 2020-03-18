@@ -3,6 +3,8 @@ import { Form, Col, Button, Container } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { hashCode } from "./Login";
+import Lottie from "react-lottie";
+import animationData from "../assets/loading.json";
 
 class Register extends React.Component {
   state = {
@@ -14,7 +16,8 @@ class Register extends React.Component {
     balance: "",
     income: "",
     spendlimit: "",
-    valid: true
+    valid: true,
+    isSubmit: true
   };
 
   updateInput(key, value) {
@@ -41,7 +44,7 @@ class Register extends React.Component {
         console.log(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
       });
-
+    this.updateInput("isSubmit", false);
     this.props.history.push("/Logged/Profile");
   }
   async passwordAuth(e) {
@@ -53,6 +56,11 @@ class Register extends React.Component {
     }
   }
   render() {
+    const defaultOptions = {
+      loop: false,
+      autoplay: false,
+      animationData: animationData
+    };
     return (
       <Container>
         <br />
@@ -156,6 +164,12 @@ class Register extends React.Component {
             Submit
           </Button>
         </Form>
+        <Lottie
+          options={defaultOptions}
+          height={155}
+          width={300}
+          isPaused={this.state.isSubmit}
+        />
       </Container>
     );
   }

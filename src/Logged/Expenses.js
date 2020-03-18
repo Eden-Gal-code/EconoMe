@@ -33,17 +33,8 @@ class Expenses extends React.Component {
       return (
         <Container>
           <br />
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Caption</th>
-                <th>Amount</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Location</th>
-                <th>Options</th>
-              </tr>
-            </thead>
+          <Table responsive>
+            <thead></thead>
             <tbody>
               {this.state.usr.expenses.map(exp => {
                 return (

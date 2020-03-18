@@ -4,6 +4,9 @@ import { withRouter } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
 
+import Lottie from "react-lottie";
+import animationData from "../assets/loading.json";
+
 export function hashCode(s) {
   var h = 0,
     l = s.length,
@@ -19,7 +22,8 @@ class Login extends React.Component {
       lastname: "",
       work: "",
       Email: "",
-      Password: ""
+      Password: "",
+      isSubmit: true
     };
     if (sessionStorage.getItem("user") !== null) {
       sessionStorage.removeItem("user");
@@ -33,7 +37,6 @@ class Login extends React.Component {
   }
 
   async checkLogin() {
-    console.log(hashCode(this.state.Password));
     const LoginInfo = {
       email: this.state.Email.slice(),
       password: hashCode(this.state.Password)
@@ -48,17 +51,25 @@ class Login extends React.Component {
         }
       });
     if (sessionStorage.getItem("user") !== null) {
+      this.updateInput("isSubmit", false);
       this.props.history.push("/Logged/Profile");
     }
   }
   render() {
+    const defaultOptions = {
+      loop: false,
+      autoplay: false,
+      animationData: animationData
+    };
     return (
       <Container>
         <Form>
           <Form.Group controlId="formGroupEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
-              onChange={e => this.updateInput("Email", e.target.value)}
+              onChange={e => {
+                this.updateInput("Email", e.target.value);
+              }}
               type="email"
               placeholder="Enter Email"
             />
@@ -81,6 +92,12 @@ class Login extends React.Component {
             Submit
           </Button>
         </Form>
+        <Lottie
+          options={defaultOptions}
+          height={155}
+          width={300}
+          isPaused={this.state.isSubmit}
+        />
       </Container>
     );
   }

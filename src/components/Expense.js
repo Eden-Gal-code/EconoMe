@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import EditExoModal from "./EditExpModal";
+import rubbish from "../assets/rubbish.png";
+import edit from "../assets/edit.png";
 class Expense extends React.Component {
   state = {
     modalShow: false
@@ -22,24 +24,46 @@ class Expense extends React.Component {
     });
   }
   render() {
+    var moment = require("moment");
+
     return (
       <React.Fragment>
         <tr>
           <td>{this.props.caption}</td>
-          <td>{this.props.amount}</td>
+          <td>{this.props.amount}₪</td>
           <td>{this.props.field}</td>
-          <td>{this.props.date}</td>
+          <td>
+            {moment(this.state.date)
+              .toDate()
+              .getUTCDate() +
+              "/" +
+              moment(this.state.date)
+                .toDate()
+                .getUTCMonth() +
+              "/" +
+              moment(this.state.date)
+                .toDate()
+                .getUTCFullYear()}
+          </td>
           <td>{this.props.location}</td>
           <td>
-            <button onClick={() => this.setModalShow(true)}>Edit</button>|{" "}
-            <button
-              type="submit"
+            <img
+              src={edit}
+              onClick={() => this.setModalShow(true)}
+              alt="e"
+              height={20}
+              width={20}
+            />
+            |
+            <img
+              src={rubbish}
               onClick={() => {
                 this.ClickDelete();
               }}
-            >
-              Delete
-            </button>
+              alt="s"
+              height={20}
+              width={20}
+            />
           </td>
         </tr>
         <EditExoModal

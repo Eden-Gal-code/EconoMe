@@ -3,17 +3,6 @@ import { Navbar, Nav } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import logo from "../assets/Logo.png";
 const LNav = () => {
-  const Hour = new Date().getHours();
-  let text = "initial";
-  function TXT() {
-    if (parseInt(Hour) < 12 && parseInt(Hour) > 6) {
-      text = "Good Morning ";
-    } else if (parseInt(Hour) > 12 && parseInt(Hour) < 17) {
-      text = "Good Afternoon ";
-    } else {
-      text = "Good Evening ";
-    }
-  }
   return (
     <Navbar sticky="top" bg="light" expand="lg">
       <Navbar.Brand href="/Logged/Profile">
@@ -33,10 +22,6 @@ const LNav = () => {
           <Nav.Link href="/Logged/AddEx">Add Expense</Nav.Link>
         </Nav>
         <Nav className="ml-auto">
-          <Navbar.Text>
-            {TXT()}
-            {"" + text}
-          </Navbar.Text>
           <Nav.Link
             href="/"
             onClick={() => {

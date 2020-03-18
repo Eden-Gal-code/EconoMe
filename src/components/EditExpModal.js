@@ -14,6 +14,7 @@ class EditExpModal extends React.Component {
       date: props.date,
       location: props.location,
       isSubmit: 0,
+      initialAmount: props.amount,
       isStopped: true,
       isAmInValid: false
     };
@@ -29,7 +30,8 @@ class EditExpModal extends React.Component {
       amount: this.state.amount,
       date: this.state.date,
       location: this.state.location,
-      field: this.state.field
+      field: this.state.field,
+      initialAmount: this.state.initialAmount
     };
     this.updateInput("isStopped", false);
     console.log(DataForServer);
@@ -219,21 +221,20 @@ class EditExpModal extends React.Component {
                 </Col>
               </Form.Group>
               <Form.Group as={Row}>
-                <Col sm={{ span: 10, offset: 2 }}>
-                  <Button
-                    onClick={() => {
-                      this.handleSubmit();
-                      this.props.onHide();
-                    }}
-                  >
-                    Add
-                  </Button>
-                </Col>
+                <Col sm={{ span: 10, offset: 2 }}></Col>
               </Form.Group>
             </Form>
           </Container>
         </Modal.Body>
         <Modal.Footer>
+          <Button
+            onClick={() => {
+              this.handleSubmit();
+              this.props.onHide();
+            }}
+          >
+            Save
+          </Button>
           <Button onClick={this.props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
