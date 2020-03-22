@@ -5,7 +5,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
 import Lottie from "react-lottie";
 
-import Loading from "../assets/Loading.json";
+import Loading from "../assets/loading.json";
 
 export function hashCode(s) {
   var h = 0,
