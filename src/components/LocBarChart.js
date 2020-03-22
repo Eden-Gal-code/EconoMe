@@ -27,7 +27,11 @@ export default class Example extends React.Component {
   render() {
     return (
       <BarChart
-        width={425}
+        width={
+          window.innerWidth > 500
+            ? window.innerWidth * 0.7
+            : window.innerWidth * 0.95
+        }
         height={400}
         data={this.state.data}
         margin={{
