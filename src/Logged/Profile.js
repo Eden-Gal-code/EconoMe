@@ -1,6 +1,6 @@
 import React from "react";
 import Jumbo from "../components/Jumbo";
-import { Tabs, Tab, Container, Row, Col, Nav } from "react-bootstrap";
+import { Tab, Row, Col, Nav } from "react-bootstrap";
 import YearlyChart from "../components/YearlyChart";
 import MonthlyChart from "../components/MonthlyChart";
 import { withRouter } from "react-router-dom";
