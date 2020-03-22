@@ -39,9 +39,9 @@ function App() {
           <Route path="/Logged/Expenses" component={Expenses}></Route>
           <Route path="/Logged/AddEx" component={AddExp}></Route>
         </Switch>
-        <div className="Foot">
-          <Footer />
-        </div>
+      </div>
+      <div className="Foot">
+        <Footer />
       </div>
     </BrowserRouter>
   );
