@@ -257,23 +257,23 @@ class AddExp extends React.Component {
           </Toast.Header>
           <Toast.Body>
             Your Expense was added go to{" "}
-            <a
+            <span
               style={{
                 color: "blue"
               }}
               onClick={() => this.props.history.push("/Logged/Expenses")}
             >
               Expenses{" "}
-            </a>
+            </span>
             or{"  "}
-            <a
+            <span
               style={{
                 color: "blue"
               }}
               onClick={() => window.location.reload()}
             >
               Add another Expenses
-            </a>
+            </span>
           </Toast.Body>
         </Toast>
       </Container>
