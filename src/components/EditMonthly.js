@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Modal, Form, Col, Row } from "react-bootstrap";
 import axios from "axios";
+import edit from "../assets/edit.png";
 class EditMonthly extends React.Component {
   constructor(props) {
     super(props);
@@ -34,10 +35,13 @@ class EditMonthly extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Button onClick={() => this.setModalShow(true)}>
-          Edit Monthly Balances
-        </Button>
-
+        <img
+          src={edit}
+          alt=""
+          height={20}
+          width={20}
+          onClick={() => this.setModalShow(true)}
+        ></img>
         <Modal
           show={this.state.modalShow}
           onHide={() => this.setModalShow(false)}

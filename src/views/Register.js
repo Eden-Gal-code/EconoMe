@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { hashCode } from "./Login";
 import Lottie from "react-lottie";
-import animationData from "../assets/loading.json";
+import Loading from "../assets/Loading.json";
 
 class Register extends React.Component {
   state = {
@@ -17,7 +17,7 @@ class Register extends React.Component {
     income: "",
     spendlimit: "",
     valid: true,
-    isSubmit: true
+    isSubmit: false
   };
 
   updateInput(key, value) {
@@ -37,6 +37,7 @@ class Register extends React.Component {
       income: this.state.income,
       spendlimit: this.state.spendlimit
     };
+    this.updateInput("isSubmit", false);
     console.log(dataS);
     await axios
       .post("https://econo-me-serv.herokuapp.com/users/add", dataS)
@@ -44,7 +45,7 @@ class Register extends React.Component {
         console.log(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
       });
-    this.updateInput("isSubmit", false);
+
     this.props.history.push("/Logged/Profile");
   }
   async passwordAuth(e) {
@@ -57,9 +58,12 @@ class Register extends React.Component {
   }
   render() {
     const defaultOptions = {
-      loop: false,
-      autoplay: false,
-      animationData: animationData
+      loop: true,
+      autoplay: true,
+      animationData: Loading,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
     };
     return (
       <Container>
@@ -164,12 +168,9 @@ class Register extends React.Component {
             Submit
           </Button>
         </Form>
-        <Lottie
-          options={defaultOptions}
-          height={155}
-          width={300}
-          isPaused={this.state.isSubmit}
-        />
+        {this.state.isSubmit && (
+          <Lottie options={defaultOptions} height={155} width={300} />
+        )}
       </Container>
     );
   }

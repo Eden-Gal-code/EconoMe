@@ -32,7 +32,7 @@ class YearlyChart extends React.Component {
   render() {
     return (
       <LineChart
-        width={500}
+        width={450}
         height={400}
         data={this.state.data}
         margin={{

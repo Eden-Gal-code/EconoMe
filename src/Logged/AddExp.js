@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Col, Button, Row, Container } from "react-bootstrap";
+import { Form, Col, Button, Row, Container, Toast } from "react-bootstrap";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 import Lottie from "react-lottie";
@@ -18,9 +18,11 @@ class AddExp extends React.Component {
       location: "",
       isSubmit: 0,
       isStopped: true,
-      isAmInValid: false
+      isAmInValid: false,
+      toast: false
     };
   }
+
   updateInput(key, value) {
     this.setState({
       [key]: value
@@ -45,6 +47,7 @@ class AddExp extends React.Component {
       .then(res => {
         console.log(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
+        this.updateInput("toast", true);
       });
   }
   checkAm(amount) {
@@ -74,8 +77,7 @@ class AddExp extends React.Component {
     };
 
     return (
-      <Container className="mt-1">
-        <br />
+      <Container className="mt-3">
         <Form>
           <fieldset>
             <Form.Group as={Row}>
@@ -119,7 +121,7 @@ class AddExp extends React.Component {
             <Col sm={10}>
               <Form.Control
                 type="text"
-                placeholder="Field"
+                placeholder="Category"
                 onChange={e => {
                   if (this.state.field === "") {
                     this.updateInput("isSubmit", this.state.isSubmit + 1);
@@ -236,6 +238,44 @@ class AddExp extends React.Component {
             </Col>
           </Form.Group>
         </Form>
+        <Toast
+          show={this.state.toast}
+          onClose={() => this.updateInput("toast", false)}
+          style={{
+            position: "absolute",
+            top: 65,
+            right: 0
+          }}
+        >
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded mr-2"
+              alt=""
+            />
+            <strong className="mr-auto">EconoMe</strong>
+          </Toast.Header>
+          <Toast.Body>
+            Your Expense was added go to{" "}
+            <a
+              style={{
+                color: "blue"
+              }}
+              onClick={() => this.props.history.push("/Logged/Expenses")}
+            >
+              Expenses{" "}
+            </a>
+            or{"  "}
+            <a
+              style={{
+                color: "blue"
+              }}
+              onClick={() => window.location.reload()}
+            >
+              Add another Expenses
+            </a>
+          </Toast.Body>
+        </Toast>
       </Container>
     );
   }

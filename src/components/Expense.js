@@ -33,15 +33,16 @@ class Expense extends React.Component {
           <td>{this.props.amount}₪</td>
           <td>{this.props.field}</td>
           <td>
-            {moment(this.state.date)
+            {moment(this.props.date)
               .toDate()
               .getUTCDate() +
               "/" +
-              moment(this.state.date)
+              (moment(this.props.date)
                 .toDate()
-                .getUTCMonth() +
+                .getMonth() +
+                1) +
               "/" +
-              moment(this.state.date)
+              moment(this.props.date)
                 .toDate()
                 .getUTCFullYear()}
           </td>

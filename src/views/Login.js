@@ -3,9 +3,9 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
 import axios from "axios";
-
 import Lottie from "react-lottie";
-import animationData from "../assets/loading.json";
+
+import Loading from "../assets/Loading.json";
 
 export function hashCode(s) {
   var h = 0,
@@ -23,7 +23,7 @@ class Login extends React.Component {
       work: "",
       Email: "",
       Password: "",
-      isSubmit: true
+      isSubmit: false
     };
     if (sessionStorage.getItem("user") !== null) {
       sessionStorage.removeItem("user");
@@ -37,6 +37,7 @@ class Login extends React.Component {
   }
 
   async checkLogin() {
+    this.updateInput("isSubmit", true);
     const LoginInfo = {
       email: this.state.Email.slice(),
       password: hashCode(this.state.Password)
@@ -47,19 +48,22 @@ class Login extends React.Component {
         if (res.data !== "0") {
           sessionStorage.setItem("user", JSON.stringify(res.data));
         } else {
+          this.updateInput("isSubmit", false);
           alert("Email or Password incorect");
         }
       });
     if (sessionStorage.getItem("user") !== null) {
-      this.updateInput("isSubmit", false);
       this.props.history.push("/Logged/Profile");
     }
   }
   render() {
     const defaultOptions = {
-      loop: false,
-      autoplay: false,
-      animationData: animationData
+      loop: true,
+      autoplay: true,
+      animationData: Loading,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice"
+      }
     };
     return (
       <Container>
@@ -92,12 +96,9 @@ class Login extends React.Component {
             Submit
           </Button>
         </Form>
-        <Lottie
-          options={defaultOptions}
-          height={155}
-          width={300}
-          isPaused={this.state.isSubmit}
-        />
+        {this.state.isSubmit && (
+          <Lottie options={defaultOptions} height={155} width={300} />
+        )}
       </Container>
     );
   }
