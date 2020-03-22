@@ -107,15 +107,20 @@ class PieChartByField extends React.Component {
 
   render() {
     return (
-      <PieChart width={500} height={400}>
+      <PieChart
+        width={
+          window.innerWidth > 500
+            ? window.innerWidth * 0.7
+            : window.innerWidth * 0.95
+        }
+        height={400}
+      >
         <Pie
           activeIndex={this.state.activeIndex}
           activeShape={renderActiveShape}
           data={this.state.data}
-          cx={190}
-          cy={190}
           innerRadius={70}
-          outerRadius={90}
+          outerRadius={100}
           fill="#0088FE"
           dataKey="value"
           onMouseEnter={this.onPieEnter}
