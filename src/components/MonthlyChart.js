@@ -28,7 +28,7 @@ class MonthlyChart extends React.Component {
   render() {
     return (
       <LineChart
-        width={450}
+        width={425}
         height={400}
         data={this.state.data}
         margin={{
