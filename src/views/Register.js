@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { hashCode } from "./Login";
 import Lottie from "react-lottie";
-import Loading from "../assets/Loading.json";
+import Loading from "../assets/loading.json";
 
 class Register extends React.Component {
   state = {
