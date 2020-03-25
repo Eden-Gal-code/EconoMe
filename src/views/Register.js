@@ -5,6 +5,7 @@ import axios from "axios";
 import { hashCode } from "./Login";
 import Lottie from "react-lottie";
 import Loading from "../assets/loading.json";
+import InputMask from "react-input-mask";
 
 class Register extends React.Component {
   state = {
@@ -13,10 +14,9 @@ class Register extends React.Component {
     email: "",
     password: "",
     workplace: "",
-    balance: "",
-    income: "",
-    spendlimit: "",
-    valid: true,
+    birthday: "",
+    validP: true,
+    validE: true,
     isSubmit: false
   };
 
@@ -33,9 +33,7 @@ class Register extends React.Component {
       email: this.state.email,
       password: hashCode(this.state.password),
       workplace: this.state.workplace,
-      balance: this.state.balance,
-      income: this.state.income,
-      spendlimit: this.state.spendlimit
+      birthday: this.state.birthday
     };
     this.updateInput("isSubmit", false);
     console.log(dataS);
@@ -51,9 +49,9 @@ class Register extends React.Component {
   async passwordAuth(e) {
     await this.updateInput("password", e.target.value);
     if (this.state.password.length > 7) {
-      this.updateInput("valid", false);
+      this.updateInput("validP", false);
     } else {
-      this.updateInput("valid", true);
+      this.updateInput("validP", true);
     }
   }
   render() {
@@ -77,6 +75,12 @@ class Register extends React.Component {
                 placeholder="Enter email"
                 onChange={e => {
                   this.updateInput("email", e.target.value);
+                  var validator = require("email-validator");
+
+                  this.updateInput(
+                    "validE",
+                    !validator.validate(e.target.value)
+                  );
                 }}
                 autoComplete="Nope"
               />
@@ -129,44 +133,29 @@ class Register extends React.Component {
             />
           </Form.Group>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>Balance</Form.Label>
-              <Form.Control
-                onChange={e => {
-                  this.updateInput("balance", e.target.value);
-                }}
-                autoComplete="Nope"
-              />
-            </Form.Group>
+            <Form.Group>
+              <Form.Label>Birthdate</Form.Label>
 
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Income</Form.Label>
-              <Form.Control
+              <InputMask
+                className="form-control"
+                mask="99/99/9999"
+                placeholder="__/__/____"
                 onChange={e => {
-                  this.updateInput("income", e.target.value);
+                  this.updateInput("birthday", e.target.birthday);
                 }}
-                autoComplete="Nope"
-              />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridSprnd">
-              <Form.Label>Spend Limit</Form.Label>
-              <Form.Control
-                onChange={e => {
-                  this.updateInput("spendlimit", e.target.value);
-                }}
-                autoComplete="Nope"
               />
             </Form.Group>
           </Form.Row>
-
-          <Button
-            variant="primary"
-            type="button"
-            onClick={() => this.handleSubmit()}
-            disabled={this.state.valid}
-          >
-            Submit
-          </Button>
+          <Form.Row>
+            <Button
+              variant="primary"
+              type="button"
+              onClick={() => this.handleSubmit()}
+              disabled={this.state.validP || this.state.validE}
+            >
+              Submit
+            </Button>
+          </Form.Row>
         </Form>
         {this.state.isSubmit && (
           <Lottie options={defaultOptions} height={155} width={300} />
