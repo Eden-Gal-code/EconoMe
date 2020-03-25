@@ -141,7 +141,8 @@ class Register extends React.Component {
                 mask="99/99/9999"
                 placeholder="__/__/____"
                 onChange={e => {
-                  this.updateInput("birthday", e.target.birthday);
+                  console.log(this.state.birthday);
+                  this.updateInput("birthday", e.target.value);
                 }}
               />
             </Form.Group>
