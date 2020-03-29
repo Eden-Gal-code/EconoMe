@@ -10,7 +10,60 @@ class EditMonthly extends React.Component {
       monthly: [],
       modalShow: false
     };
-    this.state.monthly = this.state.usr.monthly;
+    if (this.state.usr !== null) {
+      this.state.monthly = this.state.usr.monthly;
+    } else {
+      this.state.monthly = [
+        {
+          month: "Jan",
+          Mbalance: 0
+        },
+        {
+          month: "Feb",
+          Mbalance: 0
+        },
+        {
+          month: "Mar",
+          Mbalance: 0
+        },
+        {
+          month: "Apr",
+          Mbalance: 0
+        },
+        {
+          month: "May",
+          Mbalance: 0
+        },
+        {
+          month: "Jun",
+          Mbalance: 0
+        },
+        {
+          month: "Jul",
+          Mbalance: 0
+        },
+        {
+          month: "Aug",
+          Mbalance: 0
+        },
+        {
+          month: "Sep",
+          Mbalance: 0
+        },
+        {
+          month: "Oct",
+          Mbalance: 0
+        },
+        {
+          month: "Nov",
+          Mbalance: 0
+        },
+        {
+          month: "Dec",
+          Mbalance: 0
+        }
+      ];
+    }
   }
   setModalShow(flag) {
     this.setState({

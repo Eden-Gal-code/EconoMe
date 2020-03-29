@@ -10,7 +10,26 @@ class EditMonthly extends React.Component {
       yearly: [],
       modalShow: false
     };
-    this.state.yearly = this.state.usr.yearly;
+    if (this.state.usr !== null) {
+      this.state.yearly = this.state.usr.yearly;
+    } else {
+      this.state.yearly = {
+        yearly: [
+          {
+            year: 2017,
+            Ybalance: 0
+          },
+          {
+            year: 2018,
+            Ybalance: 0
+          },
+          {
+            year: 2019,
+            Ybalance: 0
+          }
+        ]
+      };
+    }
   }
   setModalShow(flag) {
     this.setState({
