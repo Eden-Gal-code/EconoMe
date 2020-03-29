@@ -7,13 +7,7 @@ class EditMonthly extends React.Component {
     super(props);
     this.state = {
       usr: JSON.parse(sessionStorage.getItem("user")),
-      yearly: [],
-      modalShow: false
-    };
-    if (this.state.usr !== null) {
-      this.state.yearly = this.state.usr.yearly;
-    } else {
-      this.state.yearly = [
+      yearly: [
         {
           year: 2017,
           Ybalance: 0
@@ -26,7 +20,11 @@ class EditMonthly extends React.Component {
           year: 2019,
           Ybalance: 0
         }
-      ];
+      ],
+      modalShow: false
+    };
+    if (this.state.usr !== null) {
+      this.state.yearly = this.state.usr.yearly;
     }
   }
   setModalShow(flag) {

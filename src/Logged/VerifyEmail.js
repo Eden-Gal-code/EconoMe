@@ -109,7 +109,7 @@ class VerifyEmail extends React.Component {
                     this.handleSubmit();
                   }}
                 >
-                  Add
+                  Submit
                 </Button>
               </Col>
             </Form.Group>
