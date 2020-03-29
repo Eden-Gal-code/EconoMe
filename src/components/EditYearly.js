@@ -23,7 +23,7 @@ class EditMonthly extends React.Component {
     };
     axios
       .post(
-        `https://econo-me-serv.herokuapp.com/users/editYear/${this.state.usr._id}`,
+        `https://econo-me-serv.herokuapp.com/users/editYear/${this.this.props.Uid}`,
         data
       )
       .then(res => {

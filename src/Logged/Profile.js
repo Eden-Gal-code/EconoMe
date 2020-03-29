@@ -41,13 +41,13 @@ class Profile extends React.Component {
                     <Nav.Item>
                       <Nav.Link eventKey="first">
                         Yearly Balance
-                        <EditYearly loc="Profile" />
+                        <EditYearly loc="Profile" Uid={this.state.usr.id} />
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="second">
                         Monthly Balance
-                        <EditMonthly loc="Profile" />
+                        <EditMonthly loc="Profile" Uid={this.state.usr.id} />
                       </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>

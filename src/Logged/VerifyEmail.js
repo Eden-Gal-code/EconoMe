@@ -91,7 +91,7 @@ class VerifyEmail extends React.Component {
                 Your Yearly Balances
               </Form.Label>
               <Col sm={10}>
-                <EditYearly />
+                <EditYearly Uid={this.state.userID} />
               </Col>
             </Form.Group>
             <Form.Group>
@@ -99,7 +99,7 @@ class VerifyEmail extends React.Component {
                 Your Monthly Balances
               </Form.Label>
               <Col sm={10}>
-                <EditMonthly />
+                <EditMonthly Uid={this.state.userID} />
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
