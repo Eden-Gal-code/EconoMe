@@ -10,6 +10,7 @@ import Profile from "./Logged/Profile";
 import About from "./views/About";
 import Register from "./views/Register";
 import Footer from "./views/Footer";
+import VerifyEmail from "./Logged/VerifyEmail";
 import "./App.css";
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Logged/Profile" component={Profile}></Route>
           <Route path="/Logged/Expenses" component={Expenses}></Route>
           <Route path="/Logged/AddEx" component={AddExp}></Route>
+          <Route path="/Logged/VerifyEmail/:id" component={VerifyEmail}></Route>
         </Switch>
       </div>
       <div className="Foot">

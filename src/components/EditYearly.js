@@ -29,7 +29,9 @@ class EditMonthly extends React.Component {
       .then(res => {
         console.log(res.data);
         sessionStorage.setItem("user", JSON.stringify(res.data));
-        window.location.reload();
+        if (this.props.loc === "Profile") {
+          window.location.reload();
+        }
       });
   }
   render() {

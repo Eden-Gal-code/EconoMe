@@ -24,61 +24,65 @@ class Profile extends React.Component {
 
   render() {
     if (this.state.islogged) {
-      return (
-        <React.Fragment>
-          <Jumbo
-            Head={this.state.usr.firstName + " " + this.state.usr.lastName}
-          >
-            <h6> Work Place: {this.state.usr.workplace}</h6>
-            <h6> Balance: {this.state.usr.balance}</h6>
-            <h6> Income: {this.state.usr.income}</h6>
-          </Jumbo>
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-            <Row>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">
-                      Yearly Balance
-                      <EditYearly />
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="second">
-                      Monthly Balance
-                      <EditMonthly />
-                    </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="third">By Location</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="forth">By Category</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={9}>
-                <Tab.Content>
-                  <Tab.Pane eventKey="first">
-                    {" "}
-                    <YearlyChart></YearlyChart>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    <MonthlyChart></MonthlyChart>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="third">
-                    {" "}
-                    <LocBarChart></LocBarChart>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="forth">
-                    <PieChartByField></PieChartByField>
-                  </Tab.Pane>
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Tab.Container>
-        </React.Fragment>
-      );
+      if (this.state.usr.verified) {
+        return (
+          <React.Fragment>
+            <Jumbo
+              Head={this.state.usr.firstName + " " + this.state.usr.lastName}
+            >
+              <h6> Work Place: {this.state.usr.workplace}</h6>
+              <h6> Balance: {this.state.usr.balance}</h6>
+              <h6> Income: {this.state.usr.income}</h6>
+            </Jumbo>
+            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+              <Row>
+                <Col sm={3}>
+                  <Nav variant="pills" className="flex-column">
+                    <Nav.Item>
+                      <Nav.Link eventKey="first">
+                        Yearly Balance
+                        <EditYearly loc="Profile" />
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="second">
+                        Monthly Balance
+                        <EditMonthly loc="Profile" />
+                      </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="third">By Location</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="forth">By Category</Nav.Link>
+                    </Nav.Item>
+                  </Nav>
+                </Col>
+                <Col sm={9}>
+                  <Tab.Content>
+                    <Tab.Pane eventKey="first">
+                      {" "}
+                      <YearlyChart></YearlyChart>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="second">
+                      <MonthlyChart></MonthlyChart>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="third">
+                      {" "}
+                      <LocBarChart></LocBarChart>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="forth">
+                      <PieChartByField></PieChartByField>
+                    </Tab.Pane>
+                  </Tab.Content>
+                </Col>
+              </Row>
+            </Tab.Container>
+          </React.Fragment>
+        );
+      } else {
+        return <h2> your account was not verified </h2>;
+      }
     } else {
       return <div></div>;
     }
