@@ -81,7 +81,8 @@ class Profile extends React.Component {
           </React.Fragment>
         );
       } else {
-        return <h2> your account was not verified </h2>;
+        this.props.history.push("/views/AccountNotVerified");
+        return <div></div>;
       }
     } else {
       return <div></div>;

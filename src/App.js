@@ -11,6 +11,7 @@ import About from "./views/About";
 import Register from "./views/Register";
 import Footer from "./views/Footer";
 import VerifyEmail from "./Logged/VerifyEmail";
+import AccountNotV from "./components/AccountNotV";
 import "./App.css";
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
           <Route path="/views/Welcome" component={Welcome}></Route>
           <Route path="/views/About" component={About}></Route>
           <Route path="/views/Login" component={Login}></Route>
+          <Route
+            path="/views/AccountNotVerified"
+            component={AccountNotV}
+          ></Route>
           <Route path="/views/Register" component={Register}></Route>
           <Route path="/Logged/Profile" component={Profile}></Route>
           <Route path="/Logged/Expenses" component={Expenses}></Route>
