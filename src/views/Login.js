@@ -48,7 +48,7 @@ class Login extends React.Component {
         if (res.data !== "0") {
           sessionStorage.setItem("user", JSON.stringify(res.data));
         } else {
-          this.updateInput("isSubmit", false);
+          this.updateInput("isSubmit", true);
           alert("Email or Password incorect");
         }
       });

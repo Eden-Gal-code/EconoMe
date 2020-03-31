@@ -35,7 +35,7 @@ class Register extends React.Component {
       workplace: this.state.workplace,
       birthday: this.state.birthday
     };
-    this.updateInput("isSubmit", false);
+    this.updateInput("isSubmit", true);
     console.log(dataS);
     await axios
       .post("https://econo-me-serv.herokuapp.com/users/add", dataS)
