@@ -14,7 +14,7 @@ class Welcome extends React.Component {
       <React.Fragment>
         <Jumbo Head="Welcome">Track All Your Expenses!!</Jumbo>
         <Style>
-          <Container className="center">
+          <Container className="d-flex justify-content-center">
             <CardDeck>
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>Tracking your Expenses</Card.Header>
